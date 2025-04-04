@@ -3,18 +3,18 @@ const button = document.querySelector('button');
 
 button.addEventListener('click',() => {
     let color = '#';
-    let nohastag = Math.random().toString(16).slice(2,8);
-    let colorhex = color + nohastag 
+    let nohashtag = Math.random().toString(16).slice(2,8);
+    let colorhex = color + nohashtag 
     bgEl.style.backgroundColor = colorhex;
     document.getElementById("test").textContent = `Color Code: ${colorhex}`;
-    fetchData();
+    return fetchData(nohashtag);
 
 })
 
 
-async function fetchData(){
+async function fetchData(nohashtag){
     try{
-        const response = await fetch(`https://www.thecolorapi.com/id?hex=${nohastag}`);
+        const response = await fetch(`https://www.thecolorapi.com/id?hex=${nohashtag}`);
 
         const data = await response.json();
         const colorname = data.name.value;
@@ -28,4 +28,4 @@ async function fetchData(){
     }
     
 
-}
+}            
