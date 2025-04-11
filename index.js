@@ -12,14 +12,20 @@ button.addEventListener('click',() => {
 })
 
 
+
 async function fetchData(nohashtag){
     try{
         const response = await fetch(`https://www.thecolorapi.com/id?hex=${nohashtag}`);
 
         const data = await response.json();
         const colorname = data.name.value;
+        if (colorname === "Black") {
+        colorname = "Unnamed Color";
+                }
+        
 
         document.getElementById("namn").innerHTML = `Color Name: ${colorname}`;
+        console.log(colorname);
         
     }
 
